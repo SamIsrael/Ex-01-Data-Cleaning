@@ -19,6 +19,7 @@ Remove the null values from the data
 Save the Clean data to the file
 
 # CODE
+## Data_set.csv
 ```python
 
 import pandas as pd
@@ -43,7 +44,34 @@ print(df)
 print(df.isnull().sum())
 
 ```
+## Loan_data.csv
+```python
+import pandas as pd
+
+df = pd.read_csv('Loan_data.csv')
+print(df)
+print(df.info())
+print(df.isnull())
+print(df.isnull().sum())
+df['Gender'] = df["Gender"].fillna(df['Gender'].mode()[0])
+df.dropna()
+df.dropna(axis=0)
+df['Dependents'] = df['Dependents'].fillna(df['Dependents'].mode()[0])
+df['Credit_History'] = df['Credit_History'].fillna(df['Credit_History'].median())
+df['Self_Employed'] = df['Self_Employed'].fillna(method='ffill')
+print("\n\n*****DATA AFTER CLEANING*****\n\n")
+print(df)
+print(df.isnull().sum())
+
+```
 # OUPUT
+
+## Data_set.csv
 ![image](./Screenshot%20from%202023-03-19%2020-54-21.png)
 ![image](./Screenshot%20from%202023-03-19%2020-54-29.png)
 ![image](./Screenshot%20from%202023-03-19%2020-54-40.png)
+
+## Loan_data.csv
+![image](./Screenshot%20from%202023-03-19%2021-06-30.png)
+![image](./Screenshot%20from%202023-03-19%2021-06-45.png)
+![image](./Screenshot%20from%202023-03-19%2021-06-49.png)
